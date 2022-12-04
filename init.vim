@@ -39,7 +39,8 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
 set cursorline laststatus=2 showcmd showmode
-set relativenumber
+set number relativenumber 
+set colorcolumn=80
 set title
 set ttyfast
 
@@ -49,14 +50,14 @@ set termguicolors
 " Core plugin configuration (lua)
 lua << EOF
 servers = {
-  'clangd',
+--  'clangd',
 	'html',
 	'cssls',
 	'phpactor',
 }
 
 require('lspconfig-config')
-require('nvim-cmp-config')
+--require('nvim-cmp-config')
 require('telescope-config')
 require('toggleterm-config')
 require('lualine-config')
@@ -114,11 +115,13 @@ set completeopt=menu,menuone,noselect
 " Core
 nmap <C-t> :ToggleTerm<CR>
 nmap <Space>t :NvimTreeToggle<CR>
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 
 " Telescope mappings
 nnoremap <Space>ff <cmd>Telescope find_files<cr>
